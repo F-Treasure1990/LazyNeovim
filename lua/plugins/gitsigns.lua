@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  lazy = true,
   init = function()
     -- load gitsigns only when a git file is opened
     vim.api.nvim_create_autocmd({ "BufRead" }, {

@@ -1,4 +1,4 @@
--- Lazy Package Manager 
+-- Lazy Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,11 +20,4 @@ vim.g.highlighturl_enabled = true -- highlight URLs by default
 require("core")
 require("lazy").setup('plugins')
 require("core.Theme")
-
-
-
---require("packer-setup")
---require("plugins")
-
-
 

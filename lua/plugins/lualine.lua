@@ -1,10 +1,6 @@
-local colorscheme = require("core.colorscheme")
-local c = colorscheme.colours
-
-
 local mode = {
   "mode",
-  color = { fg = c.black, gui = "bold" },
+  color = { gui = "bold" },
   icons_enabled = true,
   icon = nil,
   separator = { right = "" },
@@ -36,11 +32,6 @@ local buffers = {
   }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
   -- Automatically updates active buffer color to match color of other components (will be overidden if buffers_color is set)
   use_mode_colors = false,
-  buffers_color = {
-    -- Same values as the general color option can be used here.
-    active = { fg = c.green, gui = "bold" },        -- Color for active buffer.
-    inactive = { fg = c.greenAlt, gui = "italic" }, -- Color for inactive buffer.
-  },
   symbols = {
     modified = " ",    -- Text to show when the buffer is modified
     alternate_file = " ", -- Text to show to identify the alternate file
@@ -52,7 +43,6 @@ local filename = {
   'filename',
   file_status = true,     -- Displays file status (readonly status, modified status)
   newfile_status = false, -- Display new file status (new file means no write after created)
-  color = { fg = '#94E2D5', },
   path = 0,               -- 0: Just the filename
   -- 1: Relative path
   -- 2: Absolute path
@@ -63,7 +53,7 @@ local filename = {
   -- for other components. (terrible name, any suggestions?)
   symbols = {
     modified = '  ',    -- Text to show when the file is modified.
-    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
+    readonly = ' ',     -- Text to show when the file is non-modifiable or readonly.
     unnamed = '[No Name]', -- Text to show for unnamed buffers.
     newfile = '[New]',     -- Text to show for newly created file before first write
   }
@@ -75,14 +65,12 @@ local branch = {
   icon = "",
   separator = { right = "" },
   cond = nil,
-  color = { fg = c.yellow, bg = c.black },
   type = nil,
   padding = 2,
 }
 
 local filesize = {
   "filesize",
-  color = { fg = c.black },
   separator = { left = "" },
 }
 
@@ -92,7 +80,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "ayu_mirage",
+      theme = "catppuccin",
       -- component_separators = { left = "", right = "" },
       component_separators = { left = " ", right = " " },
       -- component_separators = { left = " | ", right = " | " },

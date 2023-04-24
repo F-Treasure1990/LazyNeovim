@@ -4,9 +4,17 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     build = function() vim.cmd.colorscheme "catppuccin" end
-  },                                    -- Theme
+  }, -- Theme
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  { "christoomey/vim-tmux-navigator" }, -- needed for tmux + neovim navigation
+  {
+    "christoomey/vim-tmux-navigator",
+    keys = {
+      "<C-l>",
+      "<C-h>",
+      "<C-j>",
+      "<C-k>"
+    }
+  }, -- needed for tmux + neovim navigation
   {
     "mbbill/undotree",
     keys = {
@@ -14,8 +22,13 @@ return {
     }
   },
   {
-
-    "jose-elias-alvarez/typescript.nvim" -- minimal typescript server
+    "jose-elias-alvarez/typescript.nvim", -- minimal typescript server
+    keys = {
+      { "tf", ":TypescriptRenameFile<CR>",        desc = "toggle undo tree" },
+      { "to", ":TypescriptOrganizeImports<CR>",   desc = "toggle undo tree" },
+      { "tr", ":TypescriptRemoveUnused<CR>",      desc = "toggle undo tree" },
+      { "ta", ":TypescriptAddMissingImports<CR>", desc = "toggle undo tree" },
+    }
   },
   {
     "roobert/tailwindcss-colorizer-cmp.nvim",
@@ -69,5 +82,5 @@ return {
         }
       })
     end
-  }
+  },
 }

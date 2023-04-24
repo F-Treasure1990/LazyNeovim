@@ -1,5 +1,8 @@
 return {
   "numTostr/Comment.nvim",
+  keys = {
+    "gc", "gb", "gk", "gj", "ge"
+  },
   config = function()
     local ft = require("Comment.ft")
     ft.set("astro", { "<!-- %s -->" })
@@ -29,5 +32,3 @@ return {
     })
   end,
 }
-
-

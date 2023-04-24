@@ -7,6 +7,7 @@ return {
     {
       -- Optional
       'williamboman/mason.nvim',
+      cmd = {"Mason"},
       build = function()
         pcall(vim.cmd, 'MasonUpdate')
       end,
