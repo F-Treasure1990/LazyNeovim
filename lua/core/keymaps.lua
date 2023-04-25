@@ -15,7 +15,7 @@ map("n", "qq", ":bdelete!<cr>", { desc = "Closes Buffer" })
 map({ "n", "v" }, "<S-b>", "0", { desc = "Beginning of Line" })
 -- map caps b to beginning of line
 map({ "n", "v" }, "<S-e>", "$", { desc = "End of line" })
-map("n", "ywf", "<cmd> %y+ <CR>", { desc = "copy whole file" })
+map("n", "yaf", "<cmd> %y+ <CR>", { desc = "copy whole file" })
 --Split Screen
 map("n", "<leader>\\", "<:vsp<cr>", { desc = "Split Screen Vertically" })
 map("n", "<leader>-", ":sp<cr>", { desc = "Split Screen Horizontally" })
@@ -40,4 +40,5 @@ map("n", "<leader>nt", ":tabnew<cr>", { desc = "Open New Tab" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer tab" })
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer tab" })
 
-map("n", "<TAB>", "<C-6>", { desc = "return to previous file" }) -- toggle between 2 recent files
+map("n", "<TAB>", "<C-6>", { desc = "return to previous file" })          -- toggle between 2 recent files
+map("i", "jj", "<ESC>", { silent = true }, { desc = "return to previous file" }) -- escape

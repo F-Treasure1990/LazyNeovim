@@ -33,7 +33,7 @@ local buffers = {
   -- Automatically updates active buffer color to match color of other components (will be overidden if buffers_color is set)
   use_mode_colors = false,
   symbols = {
-    modified = " ",    -- Text to show when the buffer is modified
+    modified = " ",    -- Text to show when the buffer is modified
     alternate_file = " ", -- Text to show to identify the alternate file
     directory = "",    -- Text to show when the buffer is a directory
   },
@@ -77,6 +77,7 @@ local filesize = {
 
 return {
   'nvim-lualine/lualine.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     options = {
       icons_enabled = true,
@@ -101,7 +102,7 @@ return {
     sections = {
       lualine_a = { mode },
       lualine_b = { branch },
-      lualine_c = { filename },
+      lualine_c = { buffers },
       lualine_x = { "diagnostics" },
       lualine_y = { "diagnostics", "progress" },
       lualine_z = { filesize },

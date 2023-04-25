@@ -1,8 +1,8 @@
 -- Example for neo-tree.nvim
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = 'VimEnter',
   build = ':TSUpdate',
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     require("nvim-treesitter.configs").setup({
       -- enable syntax highlighting
@@ -38,6 +38,9 @@ return {
       rainbow = {
         enable = true,
         extended_mode = false,
+        strategy = require('ts-rainbow').strategy.global,
+        query = 'rainbow-parens',
+        disable = { 'cpp' },
       },
       -- auto install above language parsers
       auto_install = true,

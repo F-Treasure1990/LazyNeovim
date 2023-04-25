@@ -3,9 +3,9 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    build = function() vim.cmd.colorscheme "catppuccin" end
+    priority = 1000,
+    lazy = true
   }, -- Theme
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   {
     "christoomey/vim-tmux-navigator",
     keys = {
@@ -30,21 +30,27 @@ return {
       { "ta", ":TypescriptAddMissingImports<CR>", desc = "toggle undo tree" },
     }
   },
-  {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-    -- optionally, override the default options:
-    config = function()
-      require("tailwindcss-colorizer-cmp").setup({
-        color_square_width = 2,
-      })
-    end
-  },
-  -- Packer
+  
   {
     "folke/noice.nvim",
-    config       = function()
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
       require("noice").setup({
-        -- add any options here
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = false,         -- use a classic bottom cmdline for search
+          command_palette = false,       -- position the cmdline and popupmenu together
+          long_message_to_split = false, -- long messages will be sent to a split
+          inc_rename = true,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true,       -- add a border to hover docs and signature help
+        },
       })
     end,
     dependencies = {
@@ -58,22 +64,11 @@ return {
   },
   {
     "HiPhish/nvim-ts-rainbow2",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        rainbow = {
-          enable = true,
-          -- list of languages you want to disable the plugin for
-          disable = { 'cpp' },
-          -- Which query to use for finding delimiters
-          query = 'rainbow-parens',
-          -- Highlight the entire buffer all at once
-          strategy = require('ts-rainbow').strategy.global,
-        }
-      })
-    end
+    lazy = true
   },
   {
     'echasnovski/mini.indentscope',
+    event = { 'BufRead', 'BufNewFile' },
     version = false,
     config = function()
       require('mini.indentscope').setup({
